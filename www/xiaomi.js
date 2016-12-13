@@ -7,7 +7,7 @@ module.exports = {
      *
      * @example
      * <code>
-     * Xiaomi.login(function (response) { alert(response.code); });
+     * Xiaomi.getAccessToken(function (response) { alert(response.code); });
      * </code>
      */
     getAccessToken: function (scope, state, onSuccess, onError) {
@@ -20,5 +20,17 @@ module.exports = {
         }
 
         return exec(onSuccess, onError, "Xiaomi", "getAccessToken", [scope, state]);
+    },
+
+    getProfile: function (scope, state, onSuccess, onError) {
+        if (typeof scope == "function") {
+            return exec(scope, state, "Xiaomi", "getProfile");
+        }
+
+        if (typeof state == "function") {
+            return exec(state, onSuccess, "Xiaomi", "getProfile", [scope]);
+        }
+
+        return exec(onSuccess, onError, "Xiaomi", "getProfile", [scope, state]);
     },
 };
