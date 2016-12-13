@@ -53,7 +53,7 @@
 
         <!-- Xiaomi Official -->
         <header-file src="src/ios/MiPassport.bundle" />
-        <source-file src="src/ios/lMiPassport.framework" framework="true" />
+        <source-file src="src/ios/MiPassport.framework" framework="true" />
 
     </platform>
 
