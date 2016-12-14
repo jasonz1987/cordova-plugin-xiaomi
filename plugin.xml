@@ -81,6 +81,6 @@
         </config-file>
 
         <source-file src="src/android/Xiaomi.java" target-dir="src/com/jasonz/xiaomi" />
-        <source-file src="src/android/oauth.1.5.jar" target-dir="libs" />
+        <source-file src="src/android/oauth.1.5.jar" target-dir="libs" framework="true"/>
     </platform>
 </plugin>

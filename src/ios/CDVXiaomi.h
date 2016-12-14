@@ -19,9 +19,6 @@
 @property (nonatomic, strong) NSString *wechatAppId;
 
 - (void)getAccessToken:(CDVInvokedUrlCommand *)command;
-- (void)sendAuthRequest:(CDVInvokedUrlCommand *)command;
-- (void)sendPaymentRequest:(CDVInvokedUrlCommand *)command;
-- (void)jumpToBizProfile:(CDVInvokedUrlCommand *)command;
-- (void)jumpToWechat:(CDVInvokedUrlCommand *)command;
+- (void)getProfile:(CDVInvokedUrlCommand *)command;
 
 @end

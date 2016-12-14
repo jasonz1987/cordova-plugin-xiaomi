@@ -130,8 +130,6 @@ static int const MAX_THUMBNAIL_SIZE = 320;
 }
 
 
-
-
 - (void)successWithCallbackID:(NSString *)callbackID
 {
     [self successWithCallbackID:callbackID withMessage:@"OK"];
