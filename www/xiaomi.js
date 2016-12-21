@@ -1,5 +1,3 @@
-cordova.define("cordova-plugin-xiaomi.Xiaomi", function(require, exports, module) {
-
 var exec = require('cordova/exec');
 
 module.exports = {
@@ -23,4 +21,3 @@ module.exports = {
     },
 };
 
-});

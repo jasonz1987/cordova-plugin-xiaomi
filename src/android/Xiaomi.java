@@ -88,8 +88,16 @@ public class Xiaomi extends CordovaPlugin {
                         String accessToken = results.getAccessToken();
                         String macKey = results.getMacKey();
                         String macAlgorithm = results.getMacAlgorithm();
-                        PluginResult result = new PluginResult(PluginResult.Status.OK, results.toString());
-                        callbackContext.sendPluginResult(result);
+                        try {
+                            JSONObject token = new JSONObject();
+                            token.put("access_token",accessToken);
+                            token.put("expire_in",results.getExpiresIn());
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, token());
+                            callbackContext.sendPluginResult(result);
+                        } catch (JSONException ex) {
+                            // 键为null或使用json不支持的数字格式(NaN, infinities)
+                            callbackContext.error(XIAOMI_IO_ERROR);
+                        }
                     }
                 } catch (IOException e1) {
                     // error
@@ -140,10 +148,23 @@ public class Xiaomi extends CordovaPlugin {
             public void run() {
                 try {
                     String ret = future.getResult();
+                    try {
+                        JSONObject obj = new JSONObject(ret);
 
-                    PluginResult result = new PluginResult(PluginResult.Status.OK, ret);
+                        if(obj.getString("result").equals("ok")) {
 
-                    callbackContext.sendPluginResult(result);
+                            JSONObject obj2 = new JSONObject(obj.getString("data"));
+
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, obj2.getString("openid"));
+
+                            callbackContext.sendPluginResult(result);
+                        } else {
+                            callbackContext.error(obj.getString("description"));
+                        }
+
+                    } catch (JSONException e) {
+                        callbackContext.error(XIAOMI_IO_ERROR);
+                    }
 
                 } catch (IOException e1) {
                     // error
@@ -182,10 +203,21 @@ public class Xiaomi extends CordovaPlugin {
             public void run() {
                 try {
                     String ret = future.getResult();
+                    try {
+                        JSONObject obj = new JSONObject(ret);
 
-                    PluginResult result = new PluginResult(PluginResult.Status.OK, ret);
+                        if(obj.getString("result").equals("ok")) {
 
-                    callbackContext.sendPluginResult(result);
+                            PluginResult result = new PluginResult(PluginResult.Status.OK, obj.getJSONObject("data"));
+
+                            callbackContext.sendPluginResult(result);
+                        } else {
+                            callbackContext.error(obj.getString("description"));
+                        }
+
+                    } catch (JSONException e) {
+                        callbackContext.error(XIAOMI_IO_ERROR);
+                    }
 
                 } catch (IOException e1) {
                     // error

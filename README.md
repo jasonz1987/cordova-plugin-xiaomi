@@ -1,14 +1,14 @@
 # cordova-plugin-xiaomi
 
-A cordova plugin, a JS version of Xiaomi SDK
+A cordova plugin, a JS version of Xiaomi OAUTH SDK
 
 # Feature
 
-getAccessToken,getProfile
+getAccessToken,getProfile,getOpenId
 
 # Example
 
-See [cordova-plugin-xiaomi-example](https://github.com/jasonz1987/cordova-plugin-xiaomi-example)
+
 
 # Install
 
@@ -35,6 +35,12 @@ Xiaomi.getAccessToken(function (result) {
 See [FAQ](https://github.com/xu-li/cordova-plugin-wechat/wiki/FAQ).
 
 # TODO
+
++ add example
+
++ support ios platform
+
++ add other sdk
 
 # More
 
