@@ -20,7 +20,7 @@ getAccessToken,getProfile,getOpenId
 
 # Usage
 
-## get AccessToken
+## getAccessToken
 ```Javascript
 Xiaomi.getAccessToken(function (result) {
     console.log(result)
@@ -29,10 +29,35 @@ Xiaomi.getAccessToken(function (result) {
 });
 ```
 
+## getOpenId 
+
+** should call this method after getAccessToken **
+
+```Javascript
+Xiaomi.getOpenId(function (result) {
+    console.log(result)
+}, function (error) {
+    console.log(error);
+});
+```
+
+## getProfile
+
+** should call this method after getAccessToken **
+
+```Javascript
+Xiaomi.getProfile(function (result) {
+    console.log(result)
+}, function (error) {
+    console.log(error);
+});
+```
+
+
 
 # FAQ
 
-See [FAQ](https://github.com/xu-li/cordova-plugin-wechat/wiki/FAQ).
+See [FAQ](https://github.com/jasonz1987/cordova-plugin-xiaomi/wiki/FAQ).
 
 # TODO
 
